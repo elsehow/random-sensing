@@ -5,6 +5,9 @@
   "scripts": {
     "watch": "watchify index.js -o bundle.js",
     "build": "browserify index.js -o bundle.js",
+    "inline": "html-inline index.html -o dist/index.html",
+    "build-dist": "npm run build && npm run inline",
+    "deploy": "npm run build-dist && scp dist/index.html nick@ischool.berkeley.edu:public_html/envisioning/",
     "start": "ecstatic ."
   },
   "author": "elsehow",
