@@ -4,7 +4,7 @@ html {
   font-size:120%
 }
 
-h1 {
+h2 {
   font-style:italic;
   font-size:250%;
 }
@@ -13,7 +13,7 @@ li {
   padding-top: 10px;
 }
 
-h2 {
+h3 {
   font-style: italic;
   font-size:140%;
   margin:3%

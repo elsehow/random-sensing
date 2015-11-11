@@ -79,6 +79,8 @@ outcomes = {
 }
 
 module.exports = {
+  game_title: 'sensing envisioning game!',
+  game_desc: 'welcome to the random sensing device envisioning game! the goal of this game is to fit together three, randomly-assigned pieces: sensing modality, context of use, and outcome from use. your job is to design an application that acheives this effect by exploiting the CHARISMA of your device & modality and designing in a way that uses SUGGESTION to manipulate the end-user. if you choose to make a social application, use make your application function as a SOCIAL SIGNAL that acheives the effect you\'re looking for. good luck!',
   modalities: modalities,
   contexts: contexts,
   outcomes: outcomes,
@@ -86,7 +88,7 @@ module.exports = {
 
 },{}],2:[function(require,module,exports){
 var h = require('hyperscript')
-var choices = require('./choices.js')
+var config = require('./choices.js')
 
 Array.prototype.randomElement = function () {
   Math.random(); Math.random(); Math.random()
@@ -105,9 +107,9 @@ function draw (blurb, category) {
   }
 
   return h('div', [
-    h('h1', category.name),
+    h('h2', category.name),
     h('p', category.generic_note),
-    h('h2', blurb.title),
+    h('h3', blurb.title),
     h('p', blurb.short_desc),
     drawExamples(blurb.examples)
   ])
@@ -120,9 +122,11 @@ function drawSection (category) {
 
 function setup () {
  return h('div', [
-    drawSection(choices.modalities),
-    drawSection(choices.contexts),
-    drawSection(choices.outcomes),
+    h('h1', config.game_title),
+    h('p', config.game_desc),
+    drawSection(config.modalities),
+    drawSection(config.contexts),
+    drawSection(config.outcomes),
   ]).outerHTML
 }
 

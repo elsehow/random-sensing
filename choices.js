@@ -78,6 +78,8 @@ outcomes = {
 }
 
 module.exports = {
+  game_title: 'sensing envisioning game!',
+  game_desc: 'welcome to the random sensing device envisioning game! the goal of this game is to fit together three, randomly-assigned pieces: sensing modality, context of use, and outcome from use. your job is to design an application that acheives this effect by exploiting the CHARISMA of your device & modality and designing in a way that uses SUGGESTION to manipulate the end-user. if you choose to make a social application, use make your application function as a SOCIAL SIGNAL that acheives the effect you\'re looking for. good luck!',
   modalities: modalities,
   contexts: contexts,
   outcomes: outcomes,

@@ -1,5 +1,5 @@
 var h = require('hyperscript')
-var choices = require('./choices.js')
+var config = require('./choices.js')
 
 Array.prototype.randomElement = function () {
   Math.random(); Math.random(); Math.random()
@@ -18,9 +18,9 @@ function draw (blurb, category) {
   }
 
   return h('div', [
-    h('h1', category.name),
+    h('h2', category.name),
     h('p', category.generic_note),
-    h('h2', blurb.title),
+    h('h3', blurb.title),
     h('p', blurb.short_desc),
     drawExamples(blurb.examples)
   ])
@@ -33,9 +33,11 @@ function drawSection (category) {
 
 function setup () {
  return h('div', [
-    drawSection(choices.modalities),
-    drawSection(choices.contexts),
-    drawSection(choices.outcomes),
+    h('h1', config.game_title),
+    h('p', config.game_desc),
+    drawSection(config.modalities),
+    drawSection(config.contexts),
+    drawSection(config.outcomes),
   ]).outerHTML
 }
 
