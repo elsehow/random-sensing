@@ -3,7 +3,13 @@
   "description": "an envisioning exercise for INFO 213 at uc berkeley",
   "main": "index.js",
   "scripts": {
+    "watch": "watchify index.js -o bundle.js",
+    "build": "browserify index.js -o bundle.js",
+    "start": "ecstatic ."
   },
   "author": "elsehow",
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "hyperscript": "^1.4.7"
+  }
 }
