@@ -1,0 +1,9 @@
+{
+  "name": "random-sensing",
+  "description": "an envisioning exercise for INFO 213 at uc berkeley",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "elsehow",
+  "license": "BSD-2-Clause"
+}
