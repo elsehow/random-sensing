@@ -1,5 +1,5 @@
 var h = require('hyperscript')
-var config = require('./choices.js')
+var config = require('./config.js')
 
 Array.prototype.randomElement = function () {
   Math.random(); Math.random(); Math.random()
