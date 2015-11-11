@@ -1,6 +1,6 @@
 modalities = {
 
-  generic_note: 'look into...',
+  generic_note: 'look into two things: (1) how these sensors/mechanisms work, what they really sense, and (2) how the devices in these examples play on authority, cultural narratives, etc... to prime the user (chrisma, suggestion).',
 
   selections: [
 
@@ -40,14 +40,14 @@ modalities = {
 
 contexts = {
 
-  generic_note: 'look into...',
+  generic_note: 'your application will revolve around this context:',
 
   selections: [
-   { title: 'WORK' },
-   { title: 'FRIENDS' },
-   { title: 'SCHOOL' },
-   { title: 'MEETING PEOPLE' },
-   { title: 'DATING' },
+   'WORK', 
+   'FRIENDS', 
+   'SCHOOL', 
+   'MEETING PEOPLE', 
+   'DATING', 
   ]
 
 }
@@ -55,13 +55,13 @@ contexts = {
 
 outcomes = {
 
-  generic_note: 'look into...',
+  generic_note: 'your application will have this outcome for the user:',
 
   selections: [
-   { title: 'MORE FUN' },
-   { title: 'MORE RELAXED' },
-   { title: 'EASIER' },
-   { title: 'MORE DESIREABLE' },
+   'MORE FUN',
+   'MORE RELAXED',
+   'EASIER',
+   'MORE DESIREABLE',
   ]
 
 }
