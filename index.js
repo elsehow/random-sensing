@@ -6,39 +6,62 @@ Array.prototype.randomElement = function () {
   return this[Math.floor(Math.random() * this.length)]
 }
 
-function draw (blurb, category) {
+function drawCategory (blurb, category) {
 
-  function drawExamples (exs) {
-    if (exs) {
-      return h('ul', exs.map(function (ex) {
-        return h('li',  
-          h('a', { href: ex.href }, ex.name))
-      }))
+  function drawHeader (category) {
+    return h('div.header', [
+      h('h2', category.name),
+      h('p', category.generic_note)
+    ])
+  }
+
+  function drawBlurb (blurb) {
+
+    function drawExamples (exs) {
+      if (exs) {
+        return h('ul', exs.map(function (ex) {
+          return h('li',  
+            h('a', { href: ex.href }, ex.name))
+        }))
+      }
+      return
     }
+
+    return('div.blurb', [
+      h('h3', blurb.title),
+      h('p', blurb.short_desc),
+      drawExamples(blurb.examples)
+    ])
   }
 
   return h('div', [
-    h('h2', category.name),
-    h('p', category.generic_note),
-    h('h3', blurb.title),
-    h('p', blurb.short_desc),
-    drawExamples(blurb.examples)
+    drawHeader(category),
+    drawBlurb(blurb)
   ])
 }
 
-function drawSection (category) {
-  var selection = category.selections.randomElement()
-  return draw(selection, category)
+function drawGameHeader () {
+  return h('div.gameHeader', [
+    h('h1', config.game_title),
+    h('p', config.game_desc),
+    h('a', { href: config.slides_href }, 'envisioning exercise slides'),
+  ])
 }
+
+function drawRandom (category) {
+  var selection = category.selections.randomElement()
+  return drawCategory(selection, category)
+}
+
 
 function setup () {
  return h('div', [
-    h('h1', config.game_title),
-    h('p', config.game_desc),
-    drawSection(config.modalities),
-    drawSection(config.contexts),
-    drawSection(config.outcomes),
+    drawGameHeader(),
+    drawRandom(config.modalities),
+    drawRandom(config.contexts),
+    drawRandom(config.outcomes),
   ]).outerHTML
 }
 
 document.write( setup() )
+return

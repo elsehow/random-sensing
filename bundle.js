@@ -3,7 +3,7 @@ modalities = {
 
   name: 'modality',
 
-  generic_note: 'look into two things: (1) how these sensors/mechanisms work, what they really sense, and (2) how the devices in these examples play on authority, cultural narratives, etc... to prime the user (chrisma, suggestion).',
+  generic_note: 'look into two things: (1) how these sensors/mechanisms work, what they really sense, and (2) how the devices in these examples play on authority, cultural narratives, etc... to prime the user (chrisma, suggestion).',
 
   selections: [
 
@@ -80,7 +80,8 @@ outcomes = {
 
 module.exports = {
   game_title: 'sensing envisioning game!',
-  game_desc: 'welcome to the random sensing device envisioning game! the goal of this game is to fit together three, randomly-assigned pieces: sensing modality, context of use, and outcome from use. your job is to design an application that acheives this effect by exploiting the CHARISMA of your device & modality and designing in a way that uses SUGGESTION to manipulate the end-user. if you choose to make a social application, use make your application function as a SOCIAL SIGNAL that acheives the effect you\'re looking for. good luck!',
+  game_desc: 'welcome! refer to the slides for an explanation of what\'s going on here.',
+  slides_href: '',
   modalities: modalities,
   contexts: contexts,
   outcomes: outcomes,
@@ -88,51 +89,74 @@ module.exports = {
 
 },{}],2:[function(require,module,exports){
 var h = require('hyperscript')
-var config = require('./choices.js')
+var config = require('./config.js')
 
 Array.prototype.randomElement = function () {
   Math.random(); Math.random(); Math.random()
   return this[Math.floor(Math.random() * this.length)]
 }
 
-function draw (blurb, category) {
+function drawCategory (blurb, category) {
 
-  function drawExamples (exs) {
-    if (exs) {
-      return h('ul', exs.map(function (ex) {
-        return h('li',  
-          h('a', { href: ex.href }, ex.name))
-      }))
+  function drawHeader (category) {
+    return h('div.header', [
+      h('h2', category.name),
+      h('p', category.generic_note)
+    ])
+  }
+
+  function drawBlurb (blurb) {
+
+    function drawExamples (exs) {
+      if (exs) {
+        return h('ul', exs.map(function (ex) {
+          return h('li',  
+            h('a', { href: ex.href }, ex.name))
+        }))
+      }
+      return
     }
+
+    return('div.blurb', [
+      h('h3', blurb.title),
+      h('p', blurb.short_desc),
+      drawExamples(blurb.examples)
+    ])
   }
 
   return h('div', [
-    h('h2', category.name),
-    h('p', category.generic_note),
-    h('h3', blurb.title),
-    h('p', blurb.short_desc),
-    drawExamples(blurb.examples)
+    drawHeader(category),
+    drawBlurb(blurb)
   ])
 }
 
-function drawSection (category) {
-  var selection = category.selections.randomElement()
-  return draw(selection, category)
+function drawGameHeader () {
+  return h('div.gameHeader', [
+    h('h1', config.game_title),
+    h('p', config.game_desc),
+    h('a', { href: config.slides_href }, 'envisioning exercise slides'),
+  ])
 }
+
+function drawRandom (category) {
+  var selection = category.selections.randomElement()
+  return drawCategory(selection, category)
+}
+
 
 function setup () {
  return h('div', [
-    h('h1', config.game_title),
-    h('p', config.game_desc),
-    drawSection(config.modalities),
-    drawSection(config.contexts),
-    drawSection(config.outcomes),
+    drawGameHeader(),
+    drawRandom(config.modalities),
+    drawRandom(config.contexts),
+    drawRandom(config.outcomes),
   ]).outerHTML
 }
 
 document.write( setup() )
+return
 
-},{"./choices.js":1,"hyperscript":3}],3:[function(require,module,exports){
+},{"./config.js":1,"hyperscript":3}],3:[function(require,module,exports){
 var split = require('browser-split')
 var ClassList = require('class-list')
 require('html-element')

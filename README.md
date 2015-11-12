@@ -23,3 +23,9 @@ all configurables are in config.js
 ## license
 
 BSD-2-Clause
+
+## TODO
+
+generate html slides from markdown
+
+link to slides from application

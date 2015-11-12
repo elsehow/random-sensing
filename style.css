@@ -1,12 +1,18 @@
 html {
-  padding: 5%;
+  padding: 5% 20% 0 20%;
   max-width: 800px;
   font-size:120%
 }
 
+h1 {
+  font-size:250%
+}
+
 h2 {
-  font-style:italic;
-  font-size:250%;
+  font-size:170%;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: sans;
 }
 
 li {

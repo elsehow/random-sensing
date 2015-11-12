@@ -3,12 +3,15 @@
   "description": "an envisioning exercise for INFO 213 at uc berkeley",
   "main": "index.js",
   "scripts": {
+    "start": "ecstatic .",
     "watch": "watchify index.js -o bundle.js",
     "build": "browserify index.js -o bundle.js",
     "inline": "html-inline index.html -o dist/index.html",
     "build-dist": "npm run build && npm run inline",
-    "deploy": "npm run build-dist && scp dist/index.html nick@ischool.berkeley.edu:public_html/envisioning/",
-    "start": "ecstatic ."
+    "build-slides": "cleaver slides.md --output dist/slides.html",
+    "watch-slides": "cleaver watch slides.md --output dist/slides.html",
+    "scp-dist": "scp dist/* nick@ischool.berkeley.edu:public_html/envisioning/",
+    "deploy": "npm run build-dist && npm run build-slides && npm run scp-dist"
   },
   "author": "elsehow",
   "license": "BSD-2-Clause",
